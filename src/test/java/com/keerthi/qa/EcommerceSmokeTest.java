@@ -46,4 +46,24 @@ public class EcommerceSmokeTest extends BaseTest {
         CartPage cartPage = new CartPage(driver);
         assertEquals("Sauce Labs Backpack", cartPage.getFirstItemName());
     }
+
+    @Test
+    void checkoutShouldShowOrderConfirmation() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addBackpackToCart();
+        productPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.checkout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.enterCustomerDetails("Keerthi", "Kandula", "520001");
+        checkoutPage.continueToOverview();
+        checkoutPage.finishOrder();
+
+        assertEquals("Thank you for your order!", checkoutPage.getConfirmationMessage());
+    }
 }
