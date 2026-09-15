@@ -1,0 +1,6 @@
+test_id,username,product,quantity,coupon,expected
+EC-001,testuser01,Wireless Mouse,1,NONE,Search result displayed
+EC-002,testuser01,UnavailableProduct,1,NONE,No results message
+EC-003,testuser01,Wireless Mouse,1,NONE,Item added to cart
+EC-004,testuser01,Wireless Mouse,2,NONE,Cart total recalculated
+EC-005,testuser01,Wireless Mouse,1,BADCOUPON,Invalid coupon message
